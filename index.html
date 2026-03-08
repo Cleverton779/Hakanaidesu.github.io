@@ -48,7 +48,6 @@ z-index:-1;
 .logo{
 
 margin-top:50px;
-
 animation:glow 3s infinite alternate;
 
 }
@@ -114,15 +113,12 @@ opacity:0.6;
 }
 
 .card:hover{
-
 cursor:pointer;
-
 }
 
 .center{
 
 transform:scale(1.2);
-
 opacity:1;
 
 }
@@ -132,11 +128,8 @@ opacity:1;
 .titulo{
 
 font-size:20px;
-
 margin-bottom:10px;
-
 font-weight:bold;
-
 letter-spacing:1px;
 
 }
@@ -149,7 +142,6 @@ width:100%;
 height:250px;
 
 border:none;
-
 border-radius:10px;
 
 }
@@ -159,9 +151,7 @@ border-radius:10px;
 .contador{
 
 margin-bottom:10px;
-
 font-size:16px;
-
 opacity:0.8;
 
 }
@@ -171,9 +161,7 @@ opacity:0.8;
 .subs{
 
 margin-top:10px;
-
 font-size:14px;
-
 opacity:0.7;
 
 }
@@ -183,25 +171,27 @@ opacity:0.7;
 @media (max-width:900px){
 
 .carousel{
-
 flex-direction:column;
-
 }
 
 .card{
-
 transform:scale(1);
-
 opacity:1;
-
 }
 
 .center{
-
 transform:scale(1.05);
+}
 
 }
 
+/* música escondida */
+
+.bg-music iframe{
+position:fixed;
+width:0;
+height:0;
+border:0;
 }
 
 </style>
@@ -212,7 +202,6 @@ transform:scale(1.05);
 <div class="logo">
 <img src="logo-haka.png">
 </div>
-
 
 <div class="carousel">
 
@@ -227,8 +216,6 @@ Canal de cortes
 <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=cortesdohaka6146"></iframe>
 
 </div>
-
-
 
 <div class="card center" id="kick">
 
@@ -246,8 +233,6 @@ Canal hakanaidesu
 
 </div>
 
-
-
 <div class="card" id="instagram">
 
 <div class="titulo">INSTAGRAM</div>
@@ -261,7 +246,6 @@ Perfil oficial
 </div>
 
 </div>
-
 
 <script>
 
@@ -281,44 +265,14 @@ card.classList.add("center");
 
 </script>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!-- MUSICA DE FUNDO -->
 
-<head>
-  <meta charset="UTF-8">
-  <title>Haka</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-  <!-- seu site inteiro -->
-  <header>
-    <img src="logo-haka.png" alt="Haka Logo">
-  </header>
-
-  <section>
-    <!-- conteúdo -->
-  </section>
-
-
-  <!-- MÚSICA DE FUNDO -->
-  <div class="bg-music">
-    <iframe
-      src="https://www.youtube.com/embed/62Vjm0UGfv8?autoplay=1&loop=1&playlist=62Vjm0UGfv8&controls=0&mute=1"
-      frameborder="0"
-      allow="autoplay">
-    </iframe>
-  </div>
-
-  <style>
-    .bg-music iframe{
-      position: fixed;
-      width: 0;
-      height: 0;
-      border: 0;
-    }
-  </style>
+<div class="bg-music">
+<iframe
+src="https://www.youtube.com/embed/62Vjm0UGfv8?autoplay=1&loop=1&playlist=62Vjm0UGfv8&controls=0&mute=1"
+allow="autoplay">
+</iframe>
+</div>
 
 </body>
 </html>
