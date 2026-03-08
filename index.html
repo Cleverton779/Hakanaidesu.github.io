@@ -7,73 +7,201 @@
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:Arial, Helvetica, sans-serif;
-text-align:center;
-color:white;
+padding:0;
+box-sizing:border-box;
+}
 
-background-image:url("fundo.png");
+body{
+
+font-family:Arial, Helvetica, sans-serif;
+color:white;
+text-align:center;
+
+background:url("fundo.png");
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
+
 }
 
+/* overlay escuro */
+
+body::before{
+
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.6);
+
+z-index:-1;
+
+}
+
+/* logo */
+
 .logo{
-margin-top:40px;
+
+margin-top:50px;
+
+animation:glow 3s infinite alternate;
+
 }
 
 .logo img{
+
 width:420px;
 max-width:90%;
+
 }
 
+@keyframes glow{
+
+from{
+filter:drop-shadow(0 0 10px orange);
+}
+
+to{
+filter:drop-shadow(0 0 30px red);
+}
+
+}
+
+/* carrossel */
+
 .carousel{
-margin-top:60px;
+
+margin-top:80px;
+
 display:flex;
 justify-content:center;
 align-items:center;
+
 gap:40px;
+
+flex-wrap:wrap;
+
 }
 
+/* cards */
+
 .card{
+
 width:320px;
 height:420px;
-background:rgba(0,0,0,0.6);
-border-radius:15px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.2);
+
 padding:15px;
 
 transition:0.4s;
 
-transform:scale(0.9);
+transform:scale(0.85);
+
 opacity:0.6;
+
 }
 
 .card:hover{
-cursor:pointer;
-}
 
-.card iframe{
-width:100%;
-height:250px;
-border:none;
-border-radius:10px;
+cursor:pointer;
+
 }
 
 .center{
+
 transform:scale(1.2);
+
 opacity:1;
+
 }
+
+/* titulo */
+
+.titulo{
+
+font-size:20px;
+
+margin-bottom:10px;
+
+font-weight:bold;
+
+letter-spacing:1px;
+
+}
+
+/* iframe */
+
+.card iframe{
+
+width:100%;
+height:250px;
+
+border:none;
+
+border-radius:10px;
+
+}
+
+/* contador */
 
 .contador{
-font-size:18px;
+
 margin-bottom:10px;
+
+font-size:16px;
+
+opacity:0.8;
+
 }
 
+/* subs */
+
 .subs{
+
 margin-top:10px;
+
 font-size:14px;
-opacity:0.8;
+
+opacity:0.7;
+
+}
+
+/* responsivo */
+
+@media (max-width:900px){
+
+.carousel{
+
+flex-direction:column;
+
+}
+
+.card{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+.center{
+
+transform:scale(1.05);
+
+}
+
 }
 
 </style>
@@ -90,8 +218,10 @@ opacity:0.8;
 
 <div class="card" id="youtube">
 
+<div class="titulo">YOUTUBE</div>
+
 <div class="contador">
-YouTube
+Canal de cortes
 </div>
 
 <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=cortesdohaka6146"></iframe>
@@ -102,14 +232,16 @@ YouTube
 
 <div class="card center" id="kick">
 
+<div class="titulo">KICK</div>
+
 <div class="contador">
-Kick
+Lives
 </div>
 
 <iframe src="https://player.kick.com/hakanaidesu"></iframe>
 
 <div class="subs">
-Subs do canal
+Canal hakanaidesu
 </div>
 
 </div>
@@ -118,8 +250,10 @@ Subs do canal
 
 <div class="card" id="instagram">
 
+<div class="titulo">INSTAGRAM</div>
+
 <div class="contador">
-Instagram
+Perfil oficial
 </div>
 
 <iframe src="https://www.instagram.com/raphael.melo.s/embed"></iframe>
@@ -148,4 +282,5 @@ card.classList.add("center");
 </script>
 
 </body>
+
 </html>
