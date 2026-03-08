@@ -11,20 +11,34 @@
 
 body{
 margin:0;
-background:#0f172a;
-color:white;
 font-family:Arial;
+color:white;
 text-align:center;
-overflow-x:hidden;
+background-image:url("haka-bg.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
-header{
-padding:30px;
-font-size:32px;
-font-weight:bold;
-background:#020617;
-letter-spacing:2px;
+/* camada escura para melhorar leitura */
+
+.overlay{
+background:rgba(0,0,0,0.65);
+min-height:100vh;
 }
+
+/* titulo com sua arte */
+
+.logo{
+margin-top:40px;
+}
+
+.logo img{
+width:500px;
+max-width:90%;
+}
+
+/* carrossel */
 
 .carousel-container{
 position:relative;
@@ -37,12 +51,13 @@ margin-top:60px;
 display:flex;
 transition:transform 0.6s ease;
 align-items:center;
+justify-content:center;
 }
 
 .card{
 min-width:300px;
 margin:0 20px;
-background:#020617;
+background:rgba(0,0,0,0.7);
 padding:20px;
 border-radius:12px;
 transform:scale(0.8);
@@ -68,12 +83,11 @@ top:50%;
 transform:translateY(-50%);
 font-size:40px;
 cursor:pointer;
-user-select:none;
 padding:10px;
 }
 
 .arrow:hover{
-color:#3b82f6;
+color:orange;
 }
 
 .left{
@@ -87,7 +101,7 @@ right:20px;
 footer{
 margin-top:80px;
 padding:20px;
-background:#020617;
+background:rgba(0,0,0,0.6);
 }
 
 </style>
@@ -96,9 +110,11 @@ background:#020617;
 
 <body>
 
-<header>
-HAKA
-</header>
+<div class="overlay">
+
+<div class="logo">
+<img src="haka-logo.png">
+</div>
 
 <div class="carousel-container">
 
@@ -107,29 +123,18 @@ HAKA
 <div class="carousel" id="carousel">
 
 <div class="card active">
-
 <h2>Kick</h2>
-
 <iframe src="https://player.kick.com/hakanaidesu"></iframe>
-
 </div>
 
 <div class="card">
-
 <h2>YouTube</h2>
-
 <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=cortesdohaka6146"></iframe>
-
 </div>
 
 <div class="card">
-
 <h2>Instagram</h2>
-
-<a href="https://instagram.com/raphael.melo.s" target="_blank">
-Abrir Instagram
-</a>
-
+<a href="https://instagram.com/raphael.melo.s" target="_blank">Abrir Instagram</a>
 </div>
 
 </div>
@@ -141,6 +146,8 @@ Abrir Instagram
 <footer>
 © 2026 HAKA • Criado por Cleverton
 </footer>
+
+</div>
 
 <script>
 
@@ -164,21 +171,4 @@ function move(direction){
 
 index += direction
 
-if(index < 0){
-index = cards.length - 1
-}
-
-if(index >= cards.length){
-index = 0
-}
-
-update()
-
-}
-
-update()
-
-</script>
-
-</body>
-</html>
+if(index < 
