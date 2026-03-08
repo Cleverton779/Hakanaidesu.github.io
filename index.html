@@ -1,174 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>HAKA</title>
 
 <style>
 
 body{
-margin:0;
-font-family:Arial;
-color:white;
-text-align:center;
-background-image:url("haka-bg.jpg");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+    margin:0;
+    font-family:Arial;
+    text-align:center;
+    color:white;
+
+    background-image:url("fundo.png");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
 }
-
-/* camada escura para melhorar leitura */
-
-.overlay{
-background:rgba(0,0,0,0.65);
-min-height:100vh;
-}
-
-/* titulo com sua arte */
 
 .logo{
-margin-top:40px;
+    margin-top:40px;
 }
 
 .logo img{
-width:500px;
-max-width:90%;
-}
-
-/* carrossel */
-
-.carousel-container{
-position:relative;
-width:100%;
-overflow:hidden;
-margin-top:60px;
+    width:400px;
 }
 
 .carousel{
-display:flex;
-transition:transform 0.6s ease;
-align-items:center;
-justify-content:center;
+    margin-top:60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    transition:0.5s;
 }
 
 .card{
-min-width:300px;
-margin:0 20px;
-background:rgba(0,0,0,0.7);
-padding:20px;
-border-radius:12px;
-transform:scale(0.8);
-opacity:0.5;
-transition:all 0.6s ease;
+    width:320px;
+    height:420px;
+    background:rgba(0,0,0,0.6);
+    border-radius:15px;
+    padding:15px;
+    transition:0.5s;
 }
 
-.card.active{
-transform:scale(1.1);
-opacity:1;
+.card iframe{
+    width:100%;
+    height:250px;
+    border:none;
+    border-radius:10px;
 }
 
-iframe{
-width:100%;
-height:220px;
-border:none;
-border-radius:10px;
+.center{
+    transform:scale(1.2);
 }
 
-.arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-font-size:40px;
-cursor:pointer;
-padding:10px;
+.contador{
+    font-size:18px;
+    margin-bottom:10px;
 }
 
-.arrow:hover{
-color:orange;
-}
-
-.left{
-left:20px;
-}
-
-.right{
-right:20px;
-}
-
-footer{
-margin-top:80px;
-padding:20px;
-background:rgba(0,0,0,0.6);
+.subs{
+    margin-top:10px;
+    font-size:14px;
+    opacity:0.8;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="overlay">
-
 <div class="logo">
-<img src="haka-logo.png">
+<img src="logo-haka.png">
 </div>
-
-<div class="carousel-container">
-
-<div class="arrow left" onclick="move(-1)">❮</div>
 
 <div class="carousel" id="carousel">
 
-<div class="card active">
-<h2>Kick</h2>
-<iframe src="https://player.kick.com/hakanaidesu"></iframe>
-</div>
+<div class="card" id="youtube">
+<div class="contador">YouTube: carregando...</div>
 
-<div class="card">
-<h2>YouTube</h2>
 <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=cortesdohaka6146"></iframe>
-</div>
-
-<div class="card">
-<h2>Instagram</h2>
-<a href="https://instagram.com/raphael.melo.s" target="_blank">Abrir Instagram</a>
-</div>
 
 </div>
 
-<div class="arrow right" onclick="move(1)">❯</div>
+
+<div class="card center" id="kick">
+
+<div class="contador">Kick: carregando...</div>
+
+<iframe src="https://player.kick.com/hakanaidesu"></iframe>
+
+<div class="subs">Subs: carregando...</div>
 
 </div>
 
-<footer>
-© 2026 HAKA • Criado por Cleverton
-</footer>
+
+<div class="card" id="instagram">
+
+<div class="contador">Instagram: carregando...</div>
+
+<iframe src="https://www.instagram.com/raphael.melo.s/embed"></iframe>
+
+</div>
 
 </div>
 
 <script>
 
-let index = 0
-const carousel = document.getElementById("carousel")
-const cards = document.querySelectorAll(".card")
+let cards = document.querySelectorAll(".card");
+let centerIndex = 1;
 
-function update(){
-
-cards.forEach(card=>card.classList.remove("active"))
-
-cards[index].classList.add("active")
-
-const offset = -index * 340 + window.innerWidth/2 - 170
-
-carousel.style.transform = `translateX(${offset}px)`
-
+function updateCarousel(){
+    cards.forEach((card,i)=>{
+        card.classList.remove("center");
+        if(i === centerIndex){
+            card.classList.add("center");
+        }
+    });
 }
 
-function move(direction){
+document.addEventListener("wheel", (e)=>{
 
-index += direction
+    if(e.deltaY > 0){
+        centerIndex++;
+    }else{
+        centerIndex--;
+    }
 
-if(index < 
+    if(centerIndex < 0) centerIndex = cards.length-1;
+    if(centerIndex >= cards.length) centerIndex = 0;
+
+    updateCarousel();
+
+});
+
+</script>
+
+</body>
+</html>
